@@ -4,9 +4,35 @@
 	<meta charset="utf-8">
 	<script>
 		// TODO: create a handler
+	
+	
+	
+	let setSearchEngine = function () {
+      let form = document.getElementById('searchForm');
+	  let engineChoice = document.querySelector("input[name=engine]:checked");
+	  //let actionURL = searchForm.getAttribute("action");
+	  let actions = {
+		"google": "https://www.google.com/",
+		"duckDuckGo": "https://duckduckgo.com/",
+		"bing": "https://www.bing.com/search",
+		"ask": "https://www.ask.com/web"
+		}
+	  
+	  for (let keyName in actions) {
+		  if (engineChoice.value === keyName) {
+			  searchForm.setAttribute("action", actions[keyName]);
+		  
+		  }
+	  }
+	  form.setAttribute('action', actions[engineChoice.value]);
+	}
     window.addEventListener("load", function(){
-        // TODO: register the handler
-    });
+        // TODO: register the handler 1) fet form element 2) add an event listener 3)submit 4)add set search as a handler
+		let form = document.getElementById("searchForm");
+		form.addEventListener("submit",setSearchEngine)
+			
+		});
+
 	</script>
 </head>
 
@@ -14,6 +40,23 @@
 
 	<form id="searchForm">
     <!-- TODO: add form elements -->
+		  <input type="text" name="q" />
+		  <label><input type="radio" name="engine" value="google"/>Google</label>
+		  <label><input type="radio" name="engine" value="duckDuckGo"/>DuckDuckGo</label>
+		  <label><input type="radio" name="engine" value="bing"/>Bing</label>
+		  <label><input type="radio" name="engine" value="ask"/>Ask</label>
+		  <!-- <button>Go!</button> -->
+		  <button id="submitButton">"Go!"</button>
+		</form>
+	  </body>
+
+	<!-- Create a text input within the form and set its name attribute to the value "q".
+	
+	Create a radio group with one radio button for each search engine. Recall that radio buttons with the same name are grouped, so use the same value for this attribute, "engine", on each radio button.
+
+	Create a label element for each radio button.
+	Finally, add a submit button to the form and set it's value to "Go!". -->
+
 	</form>
 
 </body>
